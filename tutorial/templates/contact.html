@@ -57,13 +57,13 @@
   <div class="col-lg-3 col-md-3 col-sm-6">
     <form action="" method="post">
         {% csrf_token %}
-      Email: <input type="email" name = 'email'>
+      Email: <input type="email" name = 'email' required>
       <br>
-      Phone Number: <input type="phone" name="phone">
+      Phone Number: <input type="phone" name="phone" required>
       <br>
       Address: <textarea name="address" id="" cols="30" rows="10"></textarea>
       <br>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-dark">Submit</button>
     </form>
 </div>
 </div>
