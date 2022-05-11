@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+  
+{% endblock content %}
+{% block contact %}
+<section class="breadcrumb-section set-bg" data-setbg="" style="background-image: url(&quot;app/img/breadcrumb.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Contact Us</h2>
+                    <div class="breadcrumb__option">
+                        <a href="{% url 'home' %}">Home</a>
+                        <span>Contact Us</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+            <div class="contact__widget">
+                <span class="icon_phone"></span>
+                <h4>Phone</h4>
+                <p>+92-303-5585081</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+            <div class="contact__widget">
+                <span class="icon_pin_alt"></span>
+                <h4>Address</h4>
+                <p>Johor Town, Lahore, Pakistan</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+            <div class="contact__widget">
+                <span class="icon_clock_alt"></span>
+                <h4>Open time</h4>
+                <p>10:00 am to 23:00 pm</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+            <div class="contact__widget">
+                <span class="icon_mail_alt"></span>
+                <h4>Email</h4>
+                <p>
+                    abc@pineapple.com
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock contact %}
