@@ -8,6 +8,7 @@ class ContactModel(admin.ModelAdmin):
     list_display = ['email_col', 'phone','less_address', 'view_record']
     readonly_fields = ('phone', 'email', 'address')
     search_fields = ('email', 'phone')
+    
     def less_address(self, obj):
         return obj.address[:30]
     
