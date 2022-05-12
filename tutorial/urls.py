@@ -7,4 +7,7 @@ urlpatterns = [
     path('dynamic/<slug>', dynamic_urls, name = 'dynamic'),
     path('todo/', todo_app, name='todo-app'),
     path('del/<str:item_id>', remove_todo, name="del-todo"),
+    path('mark/<str:item_id>', mark_completed, name="mark-completed"),
+    path('login', login, name='login'),
+    path('signup', registration, name='signup'),
 ]
