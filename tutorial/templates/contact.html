@@ -1,6 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Contact Us{%endblock title %} 
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Contact
+Us{%endblock title %} {% block content %}
 <section
   class="breadcrumb-section set-bg"
   data-setbg=""
@@ -50,21 +49,44 @@
         <h4>Email</h4>
         <p>abc@pineapple.com</p>
       </div>
-
-      
     </div>
   </div>
-  <div class="col-lg-3 col-md-3 col-sm-6">
-    <form action="" method="post">
-        {% csrf_token %}
-      Email: <input type="email" name = 'email' required>
-      <br>
-      Phone Number: <input type="phone" name="phone" required>
-      <br>
-      Address: <textarea name="address" id="" cols="30" rows="10"></textarea>
-      <br>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
-</div>
+
+  <div class="my-5">
+    <div class="col-lg-3 col-md-3 col-sm-6" style="float: left;">
+      <form action="" method="post">
+        {% csrf_token %} Email: <input type="email" name="email" required />
+        <br />
+        Phone Number: <input type="phone" name="phone" required />
+        <br />
+        Address: <textarea name="address" id="" cols="25" rows="6"></textarea>
+        <br />
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+    </div>
+
+    <div class="col-lg-5" style="float: right;">
+      <table>
+        <thead>
+          <tr>
+            <th>SR#</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{contact.email}}</td>
+            <td>{{contact.phone}}</td>
+            <td>{{contact.address}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 {% endblock content %}

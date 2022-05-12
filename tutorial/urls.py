@@ -5,4 +5,6 @@ urlpatterns = [
     path('contact/', contact, name = 'contact-us'),
     path('about/', about, name = 'about-us'),
     path('dynamic/<slug>', dynamic_urls, name = 'dynamic'),
+    path('todo/', todo_app, name='todo-app'),
+    path('del/<str:item_id>', remove_todo, name="del-todo"),
 ]
