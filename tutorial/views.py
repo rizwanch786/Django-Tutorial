@@ -5,6 +5,7 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
@@ -28,21 +29,25 @@ def about(request):
 def dynamic_urls(request, slug):
     return render(request, 'dynamic.html', {'data':slug})
 
+@login_required(login_url='/login/')
 def todo_app(request):
-    item_list = ToDo.objects.order_by("-published_date")
-    if request.method == 'POST':
-        todo_form = TodoForm(request.POST)
-        if todo_form.is_valid():
-            todo_form.save()
-            messages.info(request, "item Saved !!!")
-            return redirect('todo-app')
-    form = TodoForm()
-    
-    return render(request, 'todo.html', {
-             "forms" : form,
-             "list" : item_list,
-             "title" : "TODO LIST",
-           })
+    item_list = ToDo.objects.filter(user = request.user)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            todo_form = TodoForm(request.POST)
+            if todo_form.is_valid():
+                obj = todo_form.save(commit=False) # Return an object without saving to the DB
+                obj.user = User.objects.get(pk=request.user.id) # Add an user field which will contain current user's id
+                obj.save() # Save the final "real form" to the DB
+                messages.info(request, "item Saved !!!")
+                return redirect('todo-app')
+        form = TodoForm()
+        
+        return render(request, 'todo.html', {
+                "forms" : form,
+                "list" : item_list,
+                "title" : "TODO LIST",
+            })
 
 def remove_todo(request, item_id):
     item = ToDo.objects.get(id=item_id)

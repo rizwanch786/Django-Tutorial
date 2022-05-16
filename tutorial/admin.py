@@ -17,3 +17,19 @@ class ContactModel(admin.ModelAdmin):
     
     def view_record(self, obj):
         return format_html(f'<a href="/admin/tutorial/contact/{obj.id}" class="button button5">View</a>')
+    
+    
+    
+
+@admin.register(ToDo)
+class TodoAdmin(admin.ModelAdmin):
+    list_display = ['title','less_content', 'completed', 'view_record']
+    readonly_fields = ('completed',)
+    search_fields = ('title', 'user')
+    
+    def less_content(self, obj):
+        return obj.content[:30]
+    
+    
+    def view_record(self, obj):
+        return format_html(f'<a href="/admin/tutorial/todo/{obj.id}" class="button button5">View</a>')

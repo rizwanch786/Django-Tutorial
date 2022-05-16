@@ -17,3 +17,6 @@ class ToDo(models.Model):
     content = models.TextField(max_length=1000)
     published_date = models.DateTimeField(default=timezone.now)
     completed = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return str(self.title)
