@@ -45,8 +45,10 @@ def todo_app(request):
                 obj = todo_form.save(commit=False)
                 # Add an user field which will contain current user's id
                 obj.user = User.objects.get(pk=request.user.id)
+                obj.title = (request.POST.get('title')).capitalize()
+                obj.content = (request.POST.get('content')).capitalize()
                 obj.save()  # Save the final "real form" to the DB
-                messages.info(request, "item Saved !!!")
+                messages.info(request, f"Item Saved  with Title \"{(request.POST.get('title')).capitalize()}\" !!!")
                 return redirect('todo-app')
         form = TodoForm()
 
