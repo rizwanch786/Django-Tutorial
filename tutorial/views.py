@@ -120,3 +120,7 @@ def registration(request):
         else:
             messages.warning(request, 'Passwords are Different')
     return render(request, 'signup.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')

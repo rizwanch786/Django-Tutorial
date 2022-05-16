@@ -25,10 +25,15 @@
               <li class="nav-item dropdown mx-2">
                 <a class="nav-link dropdown-toggle text-black" href="#" id="profileDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if user.first_name or user.last_name %}
+                  {{user.first_name|capfirst}} {{user.last_name|capfirst}}
+                  {% else %}
                   {{user.username|capfirst}}
+                  {% endif %}
+                  
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                   <li><a class="dropdown-item" href="#">Change Password</a></li>
                   <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
                 </ul>

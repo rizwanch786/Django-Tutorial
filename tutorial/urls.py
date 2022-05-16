@@ -10,5 +10,6 @@ urlpatterns = [
     path('mark/<str:item_id>', mark_completed, name="mark-completed"),
     path('login/', signin, name='login'),
     path('signup/', registration, name='signup'),
-    path('logout/', logout_view, name='logout')
+    path('logout/', logout_view, name='logout'),
+    path('profile/', profile, name='profile'),
 ]
