@@ -21,5 +21,5 @@ admin.site.site_title = "Tutorial Admin Portal"
 admin.site.index_title = "Welcome to Tutorial Portal"
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('tutorial.urls'), name = 'tutorial')
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    path('', include('tutorial.urls'), name='tutorial')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

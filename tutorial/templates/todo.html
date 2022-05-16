@@ -7,8 +7,8 @@ Us{%endblock title %} {% block content %}
             <h3 class="text-center">{{title}}</h3>
             <hr>
             {% for message in messages %}
-      <div class="alert alert-success">{{message}}</div>
-      {% endfor %}
+                <div class="alert alert-success">{{message}}</div>
+            {% endfor %}
             <form action="" method="post" novalidate class="shadow p-5">
                 {% csrf_token %}
                 {% for fm in forms %}
