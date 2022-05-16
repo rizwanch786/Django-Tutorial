@@ -1,36 +1,48 @@
 {% extends 'base.html' %} {% load static %} {% block title %}Todo App
 Us{%endblock title %} {% block content %}
-{% for message in messages %}  
-    <!-- <div class="alert alert-success"> -->
-        <script>
-            alert('{{ message }}')
-        </script>
-    <!-- </div> -->
-{% endfor %}
-<div class="container">
-    <div class="row my-3">
-        <div class=" col-sm-6 ">
-            <h3 class="text-center">Login</h3>
-            <hr>
-            <form action="" method="post" novalidate class="shadow p-5">
-                {% csrf_token %}
-                <form method = "post">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = 'email'>
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" name = 'password'>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </form>
-        </div>
+
+<div class="container" style="padding-left: 250px">
+  <div class="row my-3">
+    <div class="col-sm-8">
+      <h3 class="text-center">Login</h3>
+      <hr />
+      {% for message in messages %}
+      <div class="alert alert-success">{{message}}</div>
+      {% endfor %}
+      <form action="" method="post" novalidate class="shadow p-5">
+        {% csrf_token %}
+        <form method="post">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              name="email"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              name="password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </form>
     </div>
-
+  </div>
 </div>
-
 
 {% endblock content %}

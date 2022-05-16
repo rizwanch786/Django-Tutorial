@@ -4,5 +4,8 @@
 {% block content %}
 <div class='container-fluid'>
     <h1>Home Page</h1>
+    {% for message in messages %}
+      <div class="alert alert-success">{{message}}</div>
+      {% endfor %}
 </div>
 {% endblock content %}

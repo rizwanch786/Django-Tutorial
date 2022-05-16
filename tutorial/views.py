@@ -52,25 +52,31 @@ def remove_todo(request, item_id):
 
 def mark_completed(request, item_id):
     item = ToDo.objects.get(id = item_id)
-    item.completed = True
-    item.save()
+    if item.completed:
+        messages.info(request,'"' + item.title + '"'+ ' is already Marked as Completed')
+    else:
+        item.completed = True
+        item.save()
+        messages.info(request,'"' + item.title + '"'+ ' Marked as Completed')
     return redirect('todo-app')
 
-def login(request):
+def signin(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST.get('password')
-        # print(f'{email} {password}')
-        user_auth = authenticate(request, username=email, password=password)
+        user_auth = authenticate(username=email, password=password)
         if user_auth is not None:
             login(request, user_auth)
             return redirect('home')
         else:
+            messages.error(request, 'Incorrect Username or Password ')
             return redirect('login')
     return render(request, 'login.html')
 
 def logout_view(request):
     logout(request)
+    messages.info(request, 'Logout successfully.. !!!')
+    return redirect('login')
     
     
 def registration(request):
@@ -78,6 +84,8 @@ def registration(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
+        firstname = request.POST.get('first_name')
+        lastname = request.POST.get('last_name')
         if password1 == password2:
             # print(f'{email} {password1} {password2}')
             user = User.objects.filter(username = email).first()
@@ -86,6 +94,8 @@ def registration(request):
                 return redirect('login')
             user = User(email = email, username = email)
             user.set_password(password1)
+            user.first_name = firstname
+            user.last_name = lastname
             user.save()
             return redirect('login')
         else:

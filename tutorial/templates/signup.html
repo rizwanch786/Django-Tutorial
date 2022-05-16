@@ -1,41 +1,82 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Sign Up{% endblock title %}
-{% block content %}
-{% for message in messages %}  
-    <!-- <div class="alert alert-success"> -->
-        <script>
-            alert('{{ message }}')
-        </script>
-    <!-- </div> -->
-{% endfor %}
-<div class="container">
-    <div class="row my-3">
-        <div class=" col-sm-6 ">
-            <h3 class="text-center">Sign Up</h3>
-            <hr>
-            <form action="" method="post" novalidate class="shadow p-5">
-                {% csrf_token %}
-                <form method = "post">
-                    <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = 'email'>
-                      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" name = 'password1'>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword2" class="form-label">Password (Again)</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" name = 'password2'>
-                      </div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                  </form>
-            </form>
-        </div>
-    </div>
+{% extends 'base.html' %} {% load static %} {% block title %}Sign Up{% endblock
+title %} {% block content %}
 
+<div class="container" style="padding-left: 250px">
+  <div class="row my-3">
+    <div class="col-sm-8">
+      <h3 class="text-center">Sign Up</h3>
+      <hr />
+      {% for message in messages %}
+      <div class="alert alert-success">{{message}}</div>
+      {% endfor %}
+      <form action="" method="post" novalidate class="shadow p-5">
+        {% csrf_token %}
+        <div class="row g-4">
+          <div class="col-auto">
+            <label for="first" class="col-form-label">First Name</label>
+          </div>
+          <div class="col-sm-3">
+            <input
+              type="text"
+              id="first"
+              class="form-control"
+              aria-describedby="passwordHelpInline"
+              name="first_name"
+            />
+          </div>
+          <div class="col-auto">
+            <label for="last" class="col-form-label">Last Name</label>
+          </div>
+          <div class="col-sm-3">
+            <input
+              type="text"
+              id="last"
+              class="form-control"
+              aria-describedby="passwordHelpInline"
+              name="last_name"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            name="email"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+            name="password1"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword2" class="form-label"
+            >Password (Again)</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword2"
+            name="password2"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 {% endblock content %}
